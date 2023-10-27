@@ -1,0 +1,27 @@
+#include <tunables/global>
+
+/profile/zookeeper {
+  # Allow read access to Zookeeper data and configuration files
+  /path/to/zookeeper/data/** r,
+  /path/to/zookeeper/conf/** r,
+  
+  # Allow Zookeeper to access necessary libraries
+  /usr/lib/** r,
+  /usr/local/lib/** r,
+  
+  # Allow Zookeeper to execute its binary
+  /path/to/zookeeper/bin/zookeeper-server-start.sh ix,
+  
+  # Allow Zookeeper to write to necessary log files
+  /var/log/zookeeper/** rw,
+  
+  # Allow Zookeeper to lock memory if needed
+  /proc/sys/vm/overcommit_memory w,
+  
+  # Allow Zookeeper to create and write to pid files
+  /run/zookeeper/ r,
+  /run/zookeeper/*.pid rw,
+  
+  # Allow Zookeeper to use IPC
+  ipc owner /run/zookeeper/ shared/ rw,
+}

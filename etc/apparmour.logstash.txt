@@ -1,0 +1,30 @@
+#include <tunables/global>
+
+/profile/logstash {
+  # Allow read access to Logstash configuration files
+  /etc/logstash/** r,
+  
+  # Allow Logstash to access necessary libraries
+  /usr/lib/** r,
+  /usr/local/lib/** r,
+  
+  # Allow Logstash to execute its binary
+  /usr/share/logstash/bin/logstash ix,
+  
+  # Allow Logstash to read input files and write to output files
+  /var/tmp/logstash/inputs/** r,
+  /var/tmp/logstash/outputs/** rw,
+  
+  # Allow Logstash to write to necessary log files
+  /var/log/logstash/** rw,
+  
+  # Allow Logstash to lock memory if needed
+  /proc/sys/vm/overcommit_memory w,
+  
+  # Allow Logstash to create and write to pid files
+  /run/logstash/ r,
+  /run/logstash/*.pid rw,
+  
+  # Allow Logstash to use IPC
+  ipc owner /run/logstash/ shared/ rw,
+}

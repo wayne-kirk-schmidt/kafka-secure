@@ -1,0 +1,5 @@
+mqueue
+/var/tmp
+/tmp
+/proc
+/dev

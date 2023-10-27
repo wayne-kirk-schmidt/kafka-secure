@@ -1,0 +1,28 @@
+#include <tunables/global>
+
+/profile/kafka {
+
+  # Allow read access to Kafka data and configuration files
+  /path/to/kafka/data/** r,
+  /path/to/kafka/config/** r,
+  
+  # Allow Kafka to access necessary libraries
+  /usr/lib/** r,
+  /usr/local/lib/** r,
+  
+  # Allow Kafka to execute its binary
+  /path/to/kafka/bin/kafka-server-start.sh ix,
+  
+  # Allow Kafka to write to necessary log files
+  /var/log/kafka/** rw,
+  
+  # Allow Kafka to lock memory if needed
+  /proc/sys/vm/overcommit_memory w,
+  
+  # Allow Kafka to create and write to pid files
+  /run/kafka/ r,
+  /run/kafka/*.pid rw,
+  
+  # Allow Kafka to use IPC
+  ipc owner /run/kafka/ shared/ rw,
+}

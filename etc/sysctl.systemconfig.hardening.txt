@@ -1,0 +1,68 @@
+### Improve system memory management
+vm.swappiness = 10
+vm.dirty_ratio = 60
+vm.dirty_background_ratio = 2
+
+### Protect Against Fork Bombing Attacks
+kernel.pid_max = 65536
+
+### Increase system file descriptor limit
+fs.file-max = 65536
+
+### Increase network file descriptor limit
+net.core.rmem_max = 16777216
+net.core.wmem_max = 16777216
+
+### Disable core dumps
+fs.suid_dumpable = 0
+
+### Limit access to kernel pointer information
+kernel.kptr_restrict = 2
+
+### Restrict access to the kernel keyring
+kernel.keys.maxkeys = 100
+
+### Prevent information leaks via /proc/kallsyms
+kernel.dmesg_restrict = 1
+
+### Protect against the user-space exploitation of perf events
+kernel.perf_event_paranoid = 3
+
+### Hide kernel symbols in /proc/kallsyms
+kernel.kptr_restrict = 2
+
+### Protect /dev/mem from unauthorized access
+kernel.deny_new_usb = 1
+
+### Disable loading of kernel modules
+kernel.modules_disabled = 1
+
+### Disable system crash dumps
+kernel.core_uses_pid = 1
+
+### Set a secure value for the process core dump suid soft resource limit
+kernel.suid_dumpable = 0
+
+### Enable ExecShield to prevent stack and heap exploits
+kernel.exec-shield = 1
+kernel.randomize_va_space = 2
+
+### Disable the creation of world-writable files
+fs.protected_hardlinks = 1
+fs.protected_symlinks = 1
+
+### Reduce the impact of fork bombs by limiting user processes
+kernel.user.processes = 512
+
+### Set a limit on the number of user processes
+kernel.user.max_user_instances = 64
+
+### Set a limit on the number of IPC namespaces
+kernel.user.max_ipc_namespaces = 64
+
+### Restrict the capabilities of processes
+kernel.cap_last_cap = 37
+
+### Enable ASLR for mmap() allocations
+kernel.randomize_va_space = 2
+
