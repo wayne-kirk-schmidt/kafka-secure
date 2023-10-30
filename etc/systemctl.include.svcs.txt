@@ -1,12 +1,11 @@
-ssh 
+ssh.service
 networking.service 
 systemd-logind.service 
 systemd-resolved.service 
 systemd-timesyncd.service 
-ufw 
+ufw.service
 systemd-udevd.service 
 apparmor.service 
-ntp.service
-kafka
-zookeeper
-logstash
+kafka.service
+zookeeper.service
+logstash.service

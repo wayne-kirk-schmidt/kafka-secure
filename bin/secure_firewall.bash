@@ -71,4 +71,4 @@ ufw default deny incoming
 ufw logging on
 
 ### Enable the Firewall
-ufw enable
+echo "y" | ufw enable

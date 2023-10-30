@@ -23,10 +23,11 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 BINDIR=$(dirname "$(realpath "${BASH_SOURCE[0]}")")
 ETCDIR=$( realpath "$BINDIR"/../etc )
 
-systemctl list-units --type=service --no-pager --no-legend | \
-awk '{print $1}' | while read servicename ; do echo "systemctl disable $servicename "; done
+### Explicitly disable services
+SVCSEXCLUDE="$ETCDIR/etc/systemctl.exclude.svcs.txt"
+cat $SVCSEXCLUDE | while read servicename ; do systemctl disable "$servicename"; done
 
-SVCSLISTFILE="$ETCDIR/etc/systemctl.vitalsvcs.txt"
-
-cat $SVCSLISTFILE | while read servicename ; do echo "systemctl enable $servicename "; done
+### Explicitly enable services
+SVCSINCLUDE="$ETCDIR/etc/systemctl.include.svcs.txt"
+cat $SVCSINCLUDE | while read servicename ; do systemctl enable "$servicename"; done
 

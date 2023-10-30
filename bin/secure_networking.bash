@@ -26,6 +26,6 @@ ETCDIR=$( realpath "$BINDIR"/../etc )
 SRCSYSCTLFILE="$ETCDIR/sysctl.network.hardening.txt"
 DSTSYSCTLFILE="/etc/sysctl.conf"
 
-echo "cat $SRCSYSCTLFILE >> $DSTSYSCTLFILE"
+cat $SRCSYSCTLFILE >> $DSTSYSCTLFILE
 
 sysctl -p

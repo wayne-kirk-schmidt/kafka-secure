@@ -3,13 +3,13 @@
 # Exaplanation: secure files and directories within a Unix build
 # 
 # Usage:
-#    $ bash  secure_file-permissions.bash
+#    $ bash  secure_permissions.bash
 #
 # Style:
 #    Google Bash Style Guide:
 #    https://google.github.io/styleguide/shellguide.html
 #
-#    @name           secure_file-permissions.bash
+#    @name           secure_permissions.bash
 #    @version        1.00
 #    @author-name    Wayne Kirk Schmidt
 #    @author-email   wayne.kirk.schmidt@changeis.co.jp

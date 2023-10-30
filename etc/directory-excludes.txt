@@ -3,3 +3,4 @@ mqueue
 /tmp
 /proc
 /dev
+/snap
