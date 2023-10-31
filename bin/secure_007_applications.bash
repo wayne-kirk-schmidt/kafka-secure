@@ -36,8 +36,8 @@ for APPARMOURSVC in "$APPARMOURSVCLIST"
 do
 	SRCARMOURFILE="$ETCDIR/apparmour.$APPARMOURSVC.txt"
 	DSTARMOURFILE="$APPARMOURDIR/$APPARMOURSVC"
-	echo "cp $SRCARMOURFILE $DSTARMOURFILE"
-	echo "apparmor_parser -r $DSTARMOURFILE"
-	echo "apparmor_parser -r $DSTARMOURFILE >> $RCLOCALFILE"
-	echo "systemctl restart $APPARMOURSVC"
+	cp "$SRCARMOURFILE" "$DSTARMOURFILE"
+	apparmor_parser -r "$DSTARMOURFILE"
+	### apparmor_parser -r "$DSTARMOURFILE" >> "$RCLOCALFILE"
+	### systemctl restart "$APPARMOURSVC"
 done
