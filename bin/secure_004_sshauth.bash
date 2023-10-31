@@ -23,3 +23,6 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 BINDIR=$(dirname "$(realpath "${BASH_SOURCE[0]}")")
 ETCDIR=$( realpath "$BINDIR"/../etc )
 
+DSTSSHCFG="/etc/ssh/sshd_config.d/10-general-security.conf"
+SRCSSHCFG="$ETCDIR/ssh.security.conf"
+cp "$SRCSSHCFG" "$DSTSSHCFG"
