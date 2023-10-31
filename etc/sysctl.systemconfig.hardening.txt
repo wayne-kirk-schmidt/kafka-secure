@@ -34,18 +34,12 @@ kernel.modules_disabled = 1
 ### Disable system crash dumps
 kernel.core_uses_pid = 1
 
-### Set a secure value for the process core dump suid soft resource limit
-kernel.suid_dumpable = 0
-
 ### Enable ExecShield to prevent stack and heap exploits
 kernel.randomize_va_space = 2
 
 ### Disable the creation of world-writable files
 fs.protected_hardlinks = 1
 fs.protected_symlinks = 1
-
-### Reduce the impact of fork bombs by limiting user processes
-kernel.user.processes = 512
 
 ### Enable ASLR for mmap() allocations
 kernel.randomize_va_space = 2
