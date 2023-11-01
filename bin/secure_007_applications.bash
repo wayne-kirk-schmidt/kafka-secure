@@ -26,17 +26,19 @@ ETCDIR=$( realpath "$BINDIR"/../etc )
 sudo apt-get update -y
 sudo apt-get install -y apparmor apparmor-utils
 
-APPARMOURSVCLIST="logstash zookeeper kafka"
+APPARMORSVCLIST="logstash zookeeper kafka"
 
-APPARMOURDIR="/etc/apparmor.d/profile"
+APPARMORDIR="/etc/apparmor.d/profile"
+
+mkdir -p "$APPARMORDIR"
 
 ### RCLOCALFILE="/etc/rc.local"
 
-for APPARMOURSVC in ${APPARMOURSVCLIST}
+for APPARMORSVC in ${APPARMORSVCLIST}
 do
-        SRCARMOURFILE="$ETCDIR/apparmour.$APPARMOURSVC.txt"
-        DSTARMOURFILE="$APPARMOURDIR/$APPARMOURSVC"
-        cp "$SRCARMOURFILE" "$DSTARMOURFILE"
-        apparmor_parser -r "$DSTARMOURFILE"
-        systemctl restart "$APPARMOURSVC"
+        SRCARMORFILE="$ETCDIR/apparmor.$APPARMORSVC.txt"
+        DSTARMORFILE="$APPARMORDIR/$APPARMORSVC"
+        cp "$SRCARMORFILE" "$DSTARMORFILE"
+        apparmor_parser -r "$DSTARMORFILE"
+        systemctl restart "$APPARMORSVC"
 done
