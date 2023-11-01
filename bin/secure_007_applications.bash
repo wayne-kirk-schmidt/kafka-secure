@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Exaplanation: applies app armor profiles to main software running on the server
-# 
+#
 # Usage:
 #    $ bash  secure_applications.bash
 #
@@ -30,14 +30,13 @@ APPARMOURSVCLIST="logstash zookeeper kafka"
 
 APPARMOURDIR="/etc/apparmor.d/profile"
 
-RCLOCALFILE="/etc/rc.local"
+### RCLOCALFILE="/etc/rc.local"
 
-for APPARMOURSVC in "$APPARMOURSVCLIST"
+for APPARMOURSVC in ${APPARMOURSVCLIST}
 do
-	SRCARMOURFILE="$ETCDIR/apparmour.$APPARMOURSVC.txt"
-	DSTARMOURFILE="$APPARMOURDIR/$APPARMOURSVC"
-	cp "$SRCARMOURFILE" "$DSTARMOURFILE"
-	apparmor_parser -r "$DSTARMOURFILE"
-	### apparmor_parser -r "$DSTARMOURFILE" >> "$RCLOCALFILE"
-	### systemctl restart "$APPARMOURSVC"
+        SRCARMOURFILE="$ETCDIR/apparmour.$APPARMOURSVC.txt"
+        DSTARMOURFILE="$APPARMOURDIR/$APPARMOURSVC"
+        cp "$SRCARMOURFILE" "$DSTARMOURFILE"
+        apparmor_parser -r "$DSTARMOURFILE"
+        systemctl restart "$APPARMOURSVC"
 done

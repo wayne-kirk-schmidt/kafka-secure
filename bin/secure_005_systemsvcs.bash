@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Exaplanation: disable all services not explicitly required by the appliance
-# 
+#
 # Usage:
 #    $ bash  secure_systemsvcs.bash
 #
@@ -25,9 +25,8 @@ ETCDIR=$( realpath "$BINDIR"/../etc )
 
 ### Explicitly disable services
 SVCSEXCLUDE="$ETCDIR/etc/systemctl.exclude.svcs.txt"
-cat $SVCSEXCLUDE | while read servicename ; do systemctl disable "$servicename"; done
+while read -r servicename ; do systemctl disable "$servicename"; done < "$SVCSEXCLUDE"
 
 ### Explicitly enable services
 SVCSINCLUDE="$ETCDIR/etc/systemctl.include.svcs.txt"
-cat $SVCSINCLUDE | while read servicename ; do systemctl enable "$servicename"; done
-
+while read -r servicename ; do systemctl enable "$servicename"; done < "$SVCSINCLUDE"

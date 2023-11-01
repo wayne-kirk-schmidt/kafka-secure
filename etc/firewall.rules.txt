@@ -1,0 +1,36 @@
+### Allow traceroute
+ufw allow 33434:33524/udp
+ufw allow 33434:33524/tcp
+
+### Allow inbound SSH
+ufw allow ssh
+
+### Allow inbound Kafka
+ufw allow 9092/tcp
+ufw allow 9093/tcp
+
+### Allow inbound zookeeper
+ufw allow 2181/tcp
+
+### Allow inbound logstash
+ufw allow 5044/tcp
+
+### Allow inbound SNMP traps
+ufw allow 162/udp
+
+### Allow incoming SNMP polling
+ufw allow 161/udp
+
+### Allow inbound Cisco telemetry
+ufw allow 50000:60000/tcp
+ufw allow 50000:60000/udp
+
+### Allow inbound Syslog 
+ufw allow 514/tcp
+ufw allow 514/udp
+
+### Allow outgoing traffic
+ufw default allow outgoing
+
+### Deny incoming traffic
+ufw default deny incoming
