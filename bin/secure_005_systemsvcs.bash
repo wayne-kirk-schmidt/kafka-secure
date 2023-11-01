@@ -24,9 +24,9 @@ BINDIR=$(dirname "$(realpath "${BASH_SOURCE[0]}")")
 ETCDIR=$( realpath "$BINDIR"/../etc )
 
 ### Explicitly disable services
-SVCSEXCLUDE="$ETCDIR/etc/systemctl.exclude.svcs.txt"
+SVCSEXCLUDE="$ETCDIR/systemctl.exclude.svcs.txt"
 while read -r servicename ; do systemctl disable "$servicename"; done < "$SVCSEXCLUDE"
 
 ### Explicitly enable services
-SVCSINCLUDE="$ETCDIR/etc/systemctl.include.svcs.txt"
+SVCSINCLUDE="$ETCDIR/systemctl.include.svcs.txt"
 while read -r servicename ; do systemctl enable "$servicename"; done < "$SVCSINCLUDE"
