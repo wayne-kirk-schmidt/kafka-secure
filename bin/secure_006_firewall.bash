@@ -23,7 +23,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 BINDIR=$(dirname "$(realpath "${BASH_SOURCE[0]}")")
 ETCDIR=$( realpath "$BINDIR"/../etc )
 
-apt-get update -y && apt-get install -y ufw
+apt-get update -y && apt-get install -y ufw iptables
 
 ### Load Firewall rules
 source "$ETCDIR/firewall.rules.txt"

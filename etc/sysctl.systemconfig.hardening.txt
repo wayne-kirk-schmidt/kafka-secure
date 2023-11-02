@@ -29,7 +29,7 @@ kernel.perf_event_paranoid = 3
 kernel.kptr_restrict = 2
 
 ### Disable loading of kernel modules
-kernel.modules_disabled = 1
+### kernel.modules_disabled = 1
 
 ### Disable system crash dumps
 kernel.core_uses_pid = 1
