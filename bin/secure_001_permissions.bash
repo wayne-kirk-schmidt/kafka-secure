@@ -19,6 +19,9 @@ umask 022
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 
+### Setup apt-get and following scripts to be non-interactive
+export DEBIAN_FRONTEND=noninteractive
+
 ### Define the bin and the etc directory as related to the running script
 BINDIR=$(dirname "$(realpath "${BASH_SOURCE[0]}")")
 ETCDIR=$( realpath "$BINDIR"/../etc )
